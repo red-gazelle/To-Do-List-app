@@ -4,6 +4,8 @@ const clear = document.querySelector(".clear");
 const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
 const input = document.getElementById("item");
+const add = document.getElementById("add");
+console.log("hello");
 
 
 //Classes names
@@ -75,8 +77,10 @@ function addToDo(toDo, id, done, trash){
 }
 
 // add an item to the list when user hits the enter key
-document.addEventListener("keyup", function(event){
-    if(event.keyCode == 13){
+
+function addToList(event){
+    console.log("clcik");
+    if(event.keyCode == 13 ){
         const toDo = input.value; //get the value from the input field
         
         if(toDo){//check input field is not empty
@@ -95,7 +99,10 @@ document.addEventListener("keyup", function(event){
         }
         input.value="";
     }
-});
+};
+document.addEventListener("keyup", addToList);
+add.addEventListener("click", addToList);
+console.log("hello");
 
 //complete to do
 function completeToDo(element){

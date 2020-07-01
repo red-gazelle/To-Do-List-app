@@ -155,8 +155,13 @@ body{
     font-family: 'Titillium Web', sans-serif;
     font-size: 20px;
 }
-
-
+#add:hover{
+    cursor: pointer;
+    
+}
+.text:hover{
+    cursor: pointer;
+}
 
 
 

@@ -4,6 +4,7 @@ const clear = document.querySelector(".clear");
 const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
 const input = document.getElementById("item");
+const add = document.getElementById("add");
 
 
 //Classes names
@@ -75,7 +76,7 @@ function addToDo(toDo, id, done, trash){
 }
 
 // add an item to the list when user hits the enter key
-document.addEventListener("keyup", function(event){
+/*document.addEventListener("keyup", function(event){
     if(event.keyCode == 13){
         const toDo = input.value; //get the value from the input field
         
@@ -95,7 +96,33 @@ document.addEventListener("keyup", function(event){
         }
         input.value="";
     }
-});
+});*/
+
+function addToList(event){
+    console.log(event.type);
+    if(event.keyCode == 13 || event.type == "click"){
+        const toDo = input.value; //get the value from the input field
+        
+        if(toDo){//check input field is not empty
+            addToDo(toDo, id, false, false);
+            
+            LIST.push({
+                name: toDo,
+                id: id,
+                done: false,
+                trash: false
+            });
+            //add item to local storage (this code must be added where the list array is updated)
+            localStorage.setItem("TODO", JSON.stringify(LIST));
+            
+            id++;
+        }
+        input.value="";
+    }
+};
+document.addEventListener("keyup", addToList)
+add.addEventListener("click", addToList);
+
 
 //complete to do
 function completeToDo(element){
